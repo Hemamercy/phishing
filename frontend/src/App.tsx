@@ -34,24 +34,34 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Phishing URL Detector</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-8">
+      <h1 className="text-3xl font-bold mb-8 text-blue-700">
+        Phishing URL Detector
+      </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row items-center gap-4 mb-6 w-full max-w-md"
+      >
         <input
           type="text"
           placeholder="Enter a URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          style={{ width: "300px", marginRight: "10px" }}
+          className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
-        <button type="submit">Check</button>
+        <button
+          type="submit"
+          className="px-6 py-2 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition-colors"
+        >
+          Check
+        </button>
       </form>
 
-      {loading && <p>Checking...</p>}
+      {loading && <p className="text-gray-500 text-lg">Checking...</p>}
 
       {result && !loading && (
-        <h2 style={{ marginTop: "20px" }}>
-          Prediction: <span>{result}</span>
+        <h2 className="mt-6 text-xl font-medium text-gray-800">
+          Prediction: <span className="font-bold text-blue-600">{result}</span>
         </h2>
       )}
     </div>
