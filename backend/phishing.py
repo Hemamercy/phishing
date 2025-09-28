@@ -31,6 +31,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_selection import SelectKBest, f_classif
 import joblib
+from pathlib import Path
 
 # optional packages
 try:
@@ -689,9 +690,11 @@ def main(csv_path, models_dir, max_samples=None, random_state=42):
 
 
 if __name__ == "__main__":
+    script_dir = Path(__file__).resolve().parent
+    default_csv = script_dir/"malicious_phish_clean.csv"
     parser = argparse.ArgumentParser()
-    parser.add_argument('--csv', default=r"C:\Users\Mohan\Downloads\malicious_phish_clean.csv")
-    parser.add_argument('--models-dir', default='models')
+    parser.add_argument('--csv', default=str(default_csv))
+    parser.add_argument('--models-dir', default=str(script_dir/"models"))
     parser.add_argument('--max-samples', type=int, default=8000, help='0 or omit to use full dataset')
     args = parser.parse_args()
     main(args.csv, args.models_dir, max_samples=(args.max_samples or None))
