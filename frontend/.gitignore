@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# model artifacts directory in backend
+/backend/models/
+
+# Python bytecode/cache files
+__pycache__/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
